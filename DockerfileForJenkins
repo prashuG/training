@@ -1,0 +1,19 @@
+### Creating Dockerfile for running Jenkins on Ubuntu
+
+# Base OS
+FROM ubuntu:16.04
+
+# Maintained By
+MAINTAINER "Prasanth Gopinath"
+
+# Updating apt repo
+RUN apt-get update
+
+# Installing Java
+RUN apt-get install default-jre -y
+
+# Copy the jenkins war file
+COPY jenkins.war /root/jenkins.war
+
+# Run the war file
+CMD ["/usr/bin/java", "-jar", "/root/jenkins.war", "--httpPort=80"]
