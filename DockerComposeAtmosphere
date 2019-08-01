@@ -11,7 +11,7 @@ node {
 
     dir (Project_Path) {
       stage('Clean my Repo') {
-        sh label: '', script: 'mvn clean'
+        sh label: '', script: 'mvn cleans'
       }
       stage('Comiple my Code') {
         sh label: '', script: 'mvn compile'
