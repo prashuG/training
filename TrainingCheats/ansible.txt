@@ -1,0 +1,187 @@
+### Preparing inventory file and running the same (-i for inventory file, -m for modules, -u for user, -k ask for password, -b to sudo to some other user)
+
+[root@master demo01]# more inventory
+172.31.0.10
+172.31.0.11
+172.31.0.12
+
+
+[root@master demo01]# ansible all -i inventory -m ping -u vagrant -k
+SSH password:
+172.31.0.10 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.31.0.11 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.31.0.12 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+
+
+### To check the ansible modules
+> ansible-doc -l
+
+
+
+### To run yum command on remote servers
+
+[root@master demo01]# ansible all -i inventory -m yum -a "name=net-tools state=present" -u vagrant -k -b
+SSH password:
+172.31.0.12 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "net-tools-2.0-0.24.20131004git.el7.x86_64 providing net-tools is already installed"
+    ]
+}
+172.31.0.11 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "net-tools-2.0-0.24.20131004git.el7.x86_64 providing net-tools is already installed"
+    ]
+}
+172.31.0.10 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "net-tools-2.0-0.24.20131004git.el7.x86_64 providing net-tools is already installed"
+    ]
+}
+
+
+### To install a package
+
+[root@master demo01]# ansible web -i inventory -m yum -a "name=httpd state=present" -b
+172.31.0.11 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "httpd-2.4.6-89.el7.centos.1.x86_64 providing httpd is already installed"
+    ]
+}
+172.31.0.10 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "httpd-2.4.6-89.el7.centos.1.x86_64 providing httpd is already installed"
+    ]
+}
+
+### To remove a package
+
+[root@master demo01]# ansible db -i inventory -m yum -a "name=httpd state=absent" -b
+172.31.0.12 | CHANGED => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": true,
+    "changes": {
+        "removed": [
+            "httpd"
+        ]
+    },
+    "msg": "",
+    "rc": 0,
+    "results": [
+        "Loaded plugins: fastestmirror\nResolving Dependencies\n--> Running transaction check\n---> Package httpd.x86_64 0:2.4.6-89.el7.centos.1 will be erased\n--> Finished Dependency Resolution\n\nDependencies Resolved\n\n================================================================================\n Package      Arch          Version                       Repository       Size\n================================================================================\nRemoving:\n httpd        x86_64
+    2.4.6-89.el7.centos.1         @updates        9.4 M\n\nTransaction Summary\n================================================================================\nRemove
+  1 Package\n\nInstalled size: 9.4 M\nDownloading packages:\nRunning transaction check\nRunning transaction test\nTransaction test succeeded\nRunning transaction\n  Erasing    : httpd-2.4.6-89.el7.centos.1.x86_64                           1/1 \n  Verifying  : httpd-2.4.6-89.el7.centos.1.x86_64                           1/1 \n\nRemoved:\n  httpd.x86_64 0:2.4.6-89.el7.centos.1                                          \n\nComplete!\n"
+    ]
+}
+
+
+### Using Or, And & Nor in ansible groups
+
+== OR ==
+
+[root@master demo01]# ansible 'web:db' -i inventory -m ping -u vagrant -b
+172.31.0.10 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.31.0.12 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.31.0.11 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+
+
+== AND ==
+
+[root@master demo01]# ansible 'web:&db' -i inventory -m ping -u vagrant -b
+ [WARNING]: No hosts matched, nothing to do
+
+
+[root@master demo01]# ansible 'all:&db' -i inventory -m ping -u vagrant -b
+172.31.0.12 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+
+
+== NOR ==
+
+[root@master demo01]# ansible 'all:dc:!db' -i inventory -m ping -u vagrant -b
+172.31.0.10 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
+172.31.0.11 | SUCCESS => {
+    "ansible_facts": {
+        "discovered_interpreter_python": "/usr/bin/python"
+    },
+    "changed": false,
+    "ping": "pong"
+}
