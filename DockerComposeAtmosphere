@@ -24,9 +24,7 @@ node {
   archiveArtifacts "${Project_Path}/target/*.jar"
   }
   notify ('Job has been completed')
-}
-
-catch (err) {
+} catch (err) {
   notify("Error ${err}")
   currentBuild.result = 'FAILURE'
 }
