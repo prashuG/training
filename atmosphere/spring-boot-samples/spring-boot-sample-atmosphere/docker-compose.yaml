@@ -3,5 +3,5 @@ version: '2'
 services:
   my-atmosphere:
     ports:
-      - '9091:8080'
+      - '9093:8080'
     build: .
