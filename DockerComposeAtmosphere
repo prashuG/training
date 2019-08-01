@@ -20,9 +20,12 @@ stage('CheckOut Repo') {
  }
  stage('Archive my Artifacts') {
  archiveArtifacts "${Project_Path}/target/*.jar"
- }
 
- stage('Stage Deployment in Docker Env.') {
+stage('Stage Deployment in Docker Env.') {
    sh label: '', script: 'docker-compose up -d --build'
+}
+
+}
+
 } 
 }
