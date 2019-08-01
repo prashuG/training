@@ -1,31 +1,28 @@
 node {
-    
-stage('CheckOut Repo') {    
-   git 'https://github.com/prashuG/training.git'
-}
-  
-  
+
+  stage('CheckOut Repo') {
+    git 'https://github.com/prashuG/training.git'
+  }
+
   def Project_Path = "atmosphere/spring-boot-samples/spring-boot-sample-atmosphere"
-  
- dir (Project_Path) { 
- stage('Clean my Repo') {
-   sh label: '', script: 'mvn clean'
- }
- stage('Comiple my Code') {
-   sh label: '', script: 'mvn compile'
- }
- stage('Build Atmosphere Package') {
-   sh label: '', script: 'mvn package'
- }
- }
- stage('Archive my Artifacts') {
- archiveArtifacts "${Project_Path}/target/*.jar"
 
-stage('Stage Deployment in Docker Env.') {
-   sh label: '', script: 'docker-compose up -d --build'
+  dir (Project_Path) {
+    stage('Clean my Repo') {
+      sh label: '', script: 'mvn clean'
+    }
+    stage('Comiple my Code') {
+      sh label: '', script: 'mvn compile'
+    }
+    stage('Build Atmosphere Package') {
+      sh label: '', script: 'mvn package'
+    }
+    stage('Stage Deployment in Docker Env.') {
+      sh label: '', script: 'docker-compose up -d --build'
+    }
+  }
+  stage('Archive my Artifacts') {
+  archiveArtifacts "${Project_Path}/target/*.jar"
+  }
+
 }
 
-}
-
-} 
-}
