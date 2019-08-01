@@ -1,7 +1,7 @@
 node {
     
 stage('CheckOut Repo') {    
-   git 'https://github.com/amitvashist7/devops-acc-29072019.git'
+   git 'https://github.com/prashuG/training.git'
 }
   
   
