@@ -28,10 +28,12 @@ node {
       stage('Prod Deployment via Ansible') {
         sh label: '', script: 'ansible-playbook -i ../../../ansible/demo07/inventory ../../../ansible/demo07/site.yaml'
       }
-      stage('Archive my Artifacts') {
-        archiveArtifacts "${Project_Path}/target/*.jar"
-      }
+     }
+     
+    stage('Archive my Artifacts') {
+      archiveArtifacts "${Project_Path}/target/*.jar"
     }
+    
     notify ('Job has been completed')
   } catch (err) {
       notify("Error ${err}")
