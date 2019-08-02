@@ -1,0 +1,52 @@
+---
+# Setting up Handler
+# Varibles 
+
+- hosts: web
+  become: yes
+  vars:
+    http_port: 80 
+    doc_root: /var/www/html/acc
+
+  tasks:
+  - name: Install Apache Packages on RedHat
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+
+  - name: Install Apache Packages on Ubuntu
+    apt: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+
+  - name: Start the Apache Service
+    service: name=httpd state=started 
+
+  - name: Quick Check of Document Root 
+    command: ls {{doc_root}}
+    register: value
+    ignore_errors: yes
+
+  - debug: msg="Document Root Does not exist"
+    when: value is failed
+
+  - name: Create the Missing Document Root
+    file: path={{doc_root}} state=directory
+    when: value is failed
+
+  - name: Deploy Apache Index Page
+    copy: src=templates/index.j2 dest={{doc_root}}/index.html
+
+  - name: Deploy Apache Index Page
+    template: src=templates/info.j2 dest={{doc_root}}/info.html
+    notify: Restart Apache
+
+
+  handlers:
+  - name: Restart Apache
+    service: name=httpd state=restarted 
+
+
+- hosts: dc
+  become: yes
+  tasks:
+  - name: Stop the firewall
+    service: name=firewalld state=stopped
