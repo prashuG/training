@@ -1,0 +1,607 @@
+### Starting docker
+
+[root@master ~]# systemctl start docker.service
+[root@master ~]#
+
+[root@master ~]# docker version
+Client: Docker Engine - Community
+ Version:           19.03.1
+ API version:       1.40
+ Go version:        go1.12.5
+ Git commit:        74b1e89
+ Built:             Thu Jul 25 21:21:07 2019
+ OS/Arch:           linux/amd64
+ Experimental:      false
+
+Server: Docker Engine - Community
+ Engine:
+  Version:          19.03.1
+  API version:      1.40 (minimum version 1.12)
+  Go version:       go1.12.5
+  Git commit:       74b1e89
+  Built:            Thu Jul 25 21:19:36 2019
+  OS/Arch:          linux/amd64
+  Experimental:     false
+ containerd:
+  Version:          1.2.6
+  GitCommit:        894b81a4b802e4eb2a91d1ce216b8817763c29fb
+ runc:
+  Version:          1.0.0-rc8
+  GitCommit:        425e105d5a03fabd737a126ad93d62a9eeede87f
+ docker-init:
+  Version:          0.18.0
+  GitCommit:        fec3683
+
+### Create docker container for ubuntu:
+
+[root@master ~]# docker run ubuntu echo "Welcome to the world of Docker"
+Unable to find image 'ubuntu:latest' locally
+latest: Pulling from library/ubuntu
+7413c47ba209: Pull complete
+0fe7e7cbb2e8: Pull complete
+1d425c982345: Pull complete
+344da5c95cec: Pull complete
+Digest: sha256:c303f19cfe9ee92badbbbd7567bc1ca47789f79303ddcef56f77687d4744cd7a
+Status: Downloaded newer image for ubuntu:latest
+Welcome to the world of Docker
+
+
+### Creating another container (Every time you execute the "run" command, a new container will be created):
+
+[root@master ~]# docker run ubuntu echo "Hello world"
+Hello world
+
+### To check running docker containers:
+
+[root@master ~]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+### To check docker containers which have been killed or are not running:
+
+[root@master ~]# docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS               NAMES
+ba8da08dd6d8        ubuntu              "echo 'Hello world'"     3 minutes ago       Exited (0) 3 minutes ago                       admiring_wu
+59b2955012c1        ubuntu              "echo 'Welcome to th…"   6 minutes ago       Exited (0) 6 minutes ago                       wonderful_cartwright
+
+### To check images available in local:
+
+[root@master ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              latest              3556258649b2        7 days ago          64.2MB
+
+
+### To check available tags of an image from docker repository:
+
+[root@master ~]# docker search ubuntu
+NAME                                                      DESCRIPTION                                     STARS               OFFICIAL            AUTOMATED
+ubuntu                                                    Ubuntu is a Debian-based Linux operating sys…   9784                [OK]
+dorowu/ubuntu-desktop-lxde-vnc                            Docker image to provide HTML5 VNC interface …   327                                     [OK]
+rastasheep/ubuntu-sshd                                    Dockerized SSH service, built on top of offi…   226                                     [OK]
+consol/ubuntu-xfce-vnc                                    Ubuntu container with "headless" VNC session…   184                                     [OK]
+ubuntu-upstart                                            Upstart is an event-based replacement for th…   99                  [OK]
+ansible/ubuntu14.04-ansible                               Ubuntu 14.04 LTS with ansible                   97                                      [OK]
+1and1internet/ubuntu-16-nginx-php-phpmyadmin-mysql-5      ubuntu-16-nginx-php-phpmyadmin-mysql-5          50                                      [OK]
+ubuntu-debootstrap                                        debootstrap --variant=minbase --components=m…   40                  [OK]
+i386/ubuntu                                               Ubuntu is a Debian-based Linux operating sys…   18
+1and1internet/ubuntu-16-apache-php-5.6                    ubuntu-16-apache-php-5.6                        14                                      [OK]
+1and1internet/ubuntu-16-apache-php-7.0                    ubuntu-16-apache-php-7.0                        13                                      [OK]
+ppc64le/ubuntu                                            Ubuntu is a Debian-based Linux operating sys…   13
+eclipse/ubuntu_jdk8                                       Ubuntu, JDK8, Maven 3, git, curl, nmap, mc, …   11                                      [OK]
+1and1internet/ubuntu-16-nginx-php-phpmyadmin-mariadb-10   ubuntu-16-nginx-php-phpmyadmin-mariadb-10       11                                      [OK]
+1and1internet/ubuntu-16-nginx-php-5.6                     ubuntu-16-nginx-php-5.6                         8                                       [OK]
+1and1internet/ubuntu-16-nginx-php-5.6-wordpress-4         ubuntu-16-nginx-php-5.6-wordpress-4             7                                       [OK]
+1and1internet/ubuntu-16-apache-php-7.1                    ubuntu-16-apache-php-7.1                        6                                       [OK]
+darksheer/ubuntu                                          Base Ubuntu Image -- Updated hourly             5                                       [OK]
+1and1internet/ubuntu-16-nginx-php-7.0                     ubuntu-16-nginx-php-7.0                         4                                       [OK]
+pivotaldata/ubuntu                                        A quick freshening-up of the base Ubuntu doc…   2
+smartentry/ubuntu                                         ubuntu with smartentry                          1                                       [OK]
+1and1internet/ubuntu-16-sshd                              ubuntu-16-sshd                                  1                                       [OK]
+1and1internet/ubuntu-16-php-7.1                           ubuntu-16-php-7.1                               1                                       [OK]
+pivotaldata/ubuntu-gpdb-dev                               Ubuntu images for GPDB development              0
+pivotaldata/ubuntu16.04-build                             Ubuntu 16.04 image for GPDB compilation         0
+
+
+=== The more the number of stars for an image the more relaible it is. ===
+
+### To download a specific tag of an image:
+
+[root@master ~]# docker pull ubuntu:xenial
+xenial: Pulling from library/ubuntu
+f7277927d38a: Pull complete
+8d3eac894db4: Pull complete
+edf72af6d627: Pull complete
+3e4f86211d23: Pull complete
+Digest: sha256:97b54e5692c27072234ff958a7442dde4266af21e7b688e7fca5dc5acc8ed7d9
+Status: Downloaded newer image for ubuntu:xenial
+docker.io/library/ubuntu:xenial
+
+[root@master ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              xenial              5e13f8dd4c1a        7 days ago          120MB
+ubuntu              latest              3556258649b2        7 days ago          64.2MB
+
+
+### To get information about the latest container use the flag '-l' and to get only the container id use '-q':
+
+[root@master ~]# docker ps -l -q
+ba8da08dd6d8
+
+### To get detailed information about your containers:
+
+[root@master ~]# docker inspect $(docker ps -l -q)
+[
+    {
+        "Id": "ba8da08dd6d8d7b74d4ee2715b85a4d83f06174c895a1fbc0f4bf22756011855",
+        "Created": "2019-07-31T06:37:49.994616824Z",
+        "Path": "echo",
+        "Args": [
+            "Hello world"
+        ],
+        "State": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2019-07-31T06:37:50.753914349Z",
+            "FinishedAt": "2019-07-31T06:37:50.661362513Z"
+        },
+. . . 
+]
+
+
+
+### To start a container in interactive mode (-i for interactive and -t to get a shell attached to the container -d to daemonize the conatiner so  that it runs in the background):
+
+[root@master ~]# docker run -itd ubuntu
+root@ab70e422db94:/#
+root@ab70e422db94:/#
+root@ab70e422db94:/# uname -a
+Linux ab70e422db94 3.10.0-957.12.2.el7.x86_64 #1 SMP Tue May 14 21:24:32 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux
+
+== The conatainer uses the same kernel as that of it's base OS ==
+
+== If we exit from the container using the 'exit' command, then the container will be terminated ==
+
+== To exit from a container safely without terminating it, press Ctrl+p+q ==
+
+### To connect to a container which was launched in interactive mode:
+
+[root@master ~]# docker attach ab70e422db94
+root@ab70e422db94:/#
+
+
+### To get name and IP address of a container
+
+[root@master ~]# docker inspect ab70e422db94 --format '{{.Name}} {{.NetworkSettings.IPAddress}}'
+/determined_meitner 172.17.0.2
+
+
+
+### To stop/start a container
+
+[root@master ~]# docker start 59b2955012c1
+59b2955012c1
+
+[root@master ~]# docker stop ab70e422db94
+ab70e422db94
+
+[root@master ~]# docker stop ab70e422db94
+ab70e422db94
+
+[root@master ~]# docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+ab70e422db94        ubuntu              "/bin/bash"              17 minutes ago      Exited (0) 7 seconds ago                        determined_meitner
+ba8da08dd6d8        ubuntu              "echo 'Hello world'"     3 hours ago         Exited (0) 19 minutes ago                       admiring_wu
+59b2955012c1        ubuntu              "echo 'Welcome to th…"   3 hours ago         Exited (0) 6 minutes ago                        wonderful_cartwright
+
+
+### To assign a specific name to a container
+
+[root@master ~]# docker run -it --name test1 ubuntu
+root@83c2b15e4026:/#
+
+[root@master ~]# docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+83c2b15e4026        ubuntu              "/bin/bash"              3 minutes ago       Up 3 minutes                                    test1
+fa03f14a5f08        ubuntu              "--name test1"           7 minutes ago       Created                                         gracious_gagarin
+ab70e422db94        ubuntu              "/bin/bash"              26 minutes ago      Exited (0) 9 minutes ago                        determined_meitner
+ba8da08dd6d8        ubuntu              "echo 'Hello world'"     3 hours ago         Exited (0) 28 minutes ago                       admiring_wu
+59b2955012c1        ubuntu              "echo 'Welcome to th…"   3 hours ago         Exited (0) 15 minutes ago                       wonderful_cartwright
+
+### To remove docker images from local:
+
+[root@master ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              xenial              5e13f8dd4c1a        7 days ago          120MB
+ubuntu              latest              3556258649b2        7 days ago          64.2MB
+[root@master ~]# docker rmi ubuntu
+Error response from daemon: conflict: unable to remove repository reference "ubuntu" (must force) - container 59b2955012c1 is using its referenced image 3556258649b2
+
+[root@master ~]# docker rmi 5e13f8dd4c1a
+Untagged: ubuntu:xenial
+Untagged: ubuntu@sha256:97b54e5692c27072234ff958a7442dde4266af21e7b688e7fca5dc5acc8ed7d9
+Deleted: sha256:5e13f8dd4c1a20dbe677261cc73171093d502f8edd1da8bec47416cdc20323c6
+Deleted: sha256:9f6a9daab62ba80b0c15987c10e0284a54ed6e4215b3c12b8608b2e4aac3b3e2
+Deleted: sha256:a8b8e5eedb5fd2d3fb35ed4773d6b0cdf1d4e4caddccd5d55b5d39c6ce5a4cda
+Deleted: sha256:30f14160ebdacef8ca253a54e9c86aa993f4666c24efa4dc27e02e76b9661bc7
+Deleted: sha256:f749b9b0fb213e9897417a985aaa9753d41bff474e1d0c0d1d266c4512eaf031
+
+[root@master ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu              latest              3556258649b2        7 days ago          64.2MB
+
+
+### To remove a docker container
+
+[root@master ~]# docker rm fa03f14a5f08
+fa03f14a5f08
+
+[root@master ~]# docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
+83c2b15e4026        ubuntu              "/bin/bash"              10 minutes ago      Exited (0) 3 minutes ago                        test1
+ab70e422db94        ubuntu              "/bin/bash"              32 minutes ago      Exited (0) 15 minutes ago                       determined_meitner
+ba8da08dd6d8        ubuntu              "echo 'Hello world'"     3 hours ago         Exited (0) 35 minutes ago                       admiring_wu
+59b2955012c1        ubuntu              "echo 'Welcome to th…"   3 hours ago         Exited (0) 21 minutes ago                       wonderful_cartwright
+
+
+[root@master ~]# docker rm 59b2955012c1 ba8da08dd6d8 ab70e422db94 
+59b2955012c1                                                      
+ba8da08dd6d8                                                      
+ab70e422db94                                                      
+
+[root@master ~]# docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                     PORTS               NAMES
+83c2b15e4026        ubuntu              "/bin/bash"         10 minutes ago      Exited (0) 3 minutes ago                       test1
+
+
+### To map your docker container to a specific port then we need to spawn the container with -p flag and provide the destination port along with the listening port
+
+[root@master ~]# docker run -it --name apache1 -p 38080:80 ubuntu /bin/bash
+
+[root@master ~]# docker ps
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS                   NAMES
+a68059b6736d        ubuntu              "/bin/bash"         15 minutes ago      Up 15 minutes       0.0.0.0:38080->80/tcp   apache1
+
+
+root@a68059b6736d:/# apt-get update; apt-get install apache2 -y
+Get:1 http://archive.ubuntu.com/ubuntu bionic InRelease [242 kB]
+Get:2 http://archive.ubuntu.com/ubuntu bionic-updates InRelease [88.7 kB]
+Get:3 http://archive.ubuntu.com/ubuntu bionic-backports InRelease [74.6 kB]
+Get:4 http://archive.ubuntu.com/ubuntu bionic/multiverse amd64 Packages [186 kB]
+Get:5 http://security.ubuntu.com/ubuntu bionic-security InRelease [88.7 kB]
+Get:6 http://archive.ubuntu.com/ubuntu bionic/main amd64 Packages [1344 kB]
+Get:7 http://archive.ubuntu.com/ubuntu bionic/restricted amd64 Packages [13.5 kB]
+Get:8 http://archive.ubuntu.com/ubuntu bionic/universe amd64 Packages [11.3 MB]
+Get:9 http://security.ubuntu.com/ubuntu bionic-security/main amd64 Packages [594 kB]
+Get:10 http://security.ubuntu.com/ubuntu bionic-security/multiverse amd64 Packages [4172 B]
+Get:11 http://archive.ubuntu.com/ubuntu bionic-updates/restricted amd64 Packages [10.8 kB]
+Get:12 http://archive.ubuntu.com/ubuntu bionic-updates/main amd64 Packages [902 kB]
+Get:13 http://archive.ubuntu.com/ubuntu bionic-updates/universe amd64 Packages [1250 kB]
+Get:14 http://archive.ubuntu.com/ubuntu bionic-updates/multiverse amd64 Packages [7235 B]
+Get:15 http://archive.ubuntu.com/ubuntu bionic-backports/main amd64 Packages [2496 B]
+Get:16 http://archive.ubuntu.com/ubuntu bionic-backports/universe amd64 Packages [3930 B]
+Get:17 http://security.ubuntu.com/ubuntu bionic-security/universe amd64 Packages [727 kB]
+Get:18 http://security.ubuntu.com/ubuntu bionic-security/restricted amd64 Packages [5436 B]
+Fetched 16.9 MB in 47s (359 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree
+.
+.
+.
+.
+
+
+root@a68059b6736d:~# apache2ctl start
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 172.17.0.2. Set the 'ServerName' directive globally to suppress this message
+root@a68059b6736d:~#
+
+root@a68059b6736d:~# ps -ef
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 11:22 pts/0    00:00:00 /bin/bash
+root      1029     1  0 11:34 ?        00:00:00 /usr/sbin/apache2 -k start
+www-data  1030  1029  0 11:34 ?        00:00:00 /usr/sbin/apache2 -k start
+www-data  1031  1029  0 11:34 ?        00:00:00 /usr/sbin/apache2 -k start
+
+
+### To ensure that the apache is started once a container is spawned, add it in the .bashrc file of the container
+
+root@a68059b6736d:~# echo "apache2ctl start" >> .bashrc
+root@a68059b6736d:~#
+
+
+### To create a new docker image from a container:
+
+[root@master ~]# docker commit -p -m "First dok image of Apache2" a68059b6736d ubuntu_apache2:v1
+sha256:a19e25975a54cea272a54fe7c2a78149a4765277564de51e89eba71b6a0bd509
+
+
+[root@master ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+ubuntu_apache2      v1                  a19e25975a54        6 seconds ago       188MB
+<none>              <none>              1439971777dd        2 minutes ago       188MB
+ubuntu              16.04               5e13f8dd4c1a        7 days ago          120MB
+ubuntu              latest              3556258649b2        7 days ago          64.2MB
+
+=== -p flag is used to pause the container temporarily while the image is being prepared ===
+
+=== To access the apache installed in container from a browser, you need to access the VMs ip along with the dpt allocated to the container. In this example it would be http://172.31.0.10:38080/info.html
+
+
+### To build a docker image from Dockerfile, first you need to prepare a Dockerfile, as shown below:
+
+[root@master ~]# cat Dockerfile
+#Creating a docker file
+
+#Selecting the container OS version
+FROM ubuntu:16.04
+
+#Maintained by
+MAINTAINER "Prasanth Gopinath"
+
+#Updating repo
+RUN apt-get update
+
+#Installing apache
+RUN apt-get install apache2 -y
+
+# Copy a file from local to image
+COPY info.html /var/www/html/info.html
+
+# Expose service
+EXPOSE 80
+
+#Start apache2
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+
+=== Run the docker file with the below command. Note: if your Dockerfile name is different then provide the filename using the -f flag ===
+
+[root@master ~]# docker build -t "prashug/myapache:v1" .
+Sending build context to Docker daemon    767MB
+Step 1/7 : FROM ubuntu:16.04
+ ---> 5e13f8dd4c1a
+Step 2/7 : MAINTAINER "Prasanth Gopinath"
+ ---> Running in 52c81f4a165a
+Removing intermediate container 52c81f4a165a
+ ---> a78097be65b7
+Step 3/7 : RUN apt-get update
+ ---> Running in 0651b35adf47
+.
+.
+.
+.
+.
+.
+Processing triggers for sgml-base (1.26+nmu4ubuntu1) ...
+Removing intermediate container 06637c80f7e9
+ ---> 08c8cccfb20a
+Step 5/7 : COPY info.html /var/www/html/info.html
+ ---> 45a1a11312f0
+Step 6/7 : EXPOSE 80
+ ---> Running in 9b57ac24b10e
+Removing intermediate container 9b57ac24b10e
+ ---> 95d6e63b5593
+Step 7/7 : CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+ ---> Running in 1c9ca10c6b03
+Removing intermediate container 1c9ca10c6b03
+ ---> 7349cdef0058
+Successfully built 7349cdef0058
+Successfully tagged prashug/myapache:v1
+
+
+[root@master ~]# docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+prashug/myapache    v1                  7349cdef0058        14 seconds ago      244MB
+ubuntu_apache2      v1                  a19e25975a54        52 minutes ago      188MB
+ubuntu              16.04               5e13f8dd4c1a        7 days ago          120MB
+ubuntu              latest              3556258649b2        7 days ago          64.2MB
+
+
+### Spawn a container from the image
+
+[root@master ~]# docker run -d --name DockerFileCont -p 38091:80 prashug/myapache:v1
+ee65b015cbec63ca375f8c074339b9b7f1ca272bc70ae39bea7e621fb436cc9c
+
+[root@master ~]# docker ps -a
+CONTAINER ID        IMAGE                 COMMAND                  CREATED              STATUS              PORTS                   NAMES
+ee65b015cbec        prashug/myapache:v1   "/usr/sbin/apache2ct…"   About a minute ago   Up About a minute   0.0.0.0:38091->80/tcp   DockerFileCont
+
+
+
+### Create an account in hub.docker.com and once done login to your account from your docker VM:
+
+[root@master ~]# docker login
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: prashug
+Password:
+WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+### To push an image into docker hub
+
+[root@master ~]# docker push prashug/myapache:v1
+The push refers to repository [docker.io/prashug/myapache]
+2a1d43f9de80: Pushed
+cc49d1595a6f: Pushed
+31e1ee861cfb: Pushed
+e79142719515: Mounted from library/ubuntu
+aeda103e78c9: Mounted from library/ubuntu
+2558e637fbff: Mounted from library/ubuntu
+f749b9b0fb21: Mounted from library/ubuntu
+v1: digest: sha256:4a111508d062646128494629c72e2f0f2190799d08969ffe533ec14975dbd77b size: 1781
+
+### To point a tag on hub to latest
+
+[root@master ~]# docker tag prashug/myapache:v1 prashug/myapache:latest
+[root@master ~]#
+
+[root@master ~]# docker push prashug/myapache:latest
+The push refers to repository [docker.io/prashug/myapache]
+2a1d43f9de80: Layer already exists
+cc49d1595a6f: Layer already exists
+31e1ee861cfb: Layer already exists
+e79142719515: Layer already exists
+aeda103e78c9: Layer already exists
+2558e637fbff: Layer already exists
+f749b9b0fb21: Layer already exists
+latest: digest: sha256:4a111508d062646128494629c72e2f0f2190799d08969ffe533ec14975dbd77b size: 1781
+
+
+### Docker compose
+
+[root@master ~]# docker-compose --version
+docker-compose version 1.24.1, build 4667896b
+
+
+[root@master compose]# more docker-compose.yaml
+my-git:
+  image: prashug/myapache:v1
+  ports:
+    - '8093:80'
+
+
+
+my-test:
+  image: prashug/myapache:v1
+  ports:
+    - '8092:80'
+
+
+
+my-prod:
+  image: prashug/myapache:v1
+  ports:
+    - '8091:80'
+
+
+[root@master compose]# docker-compose up -d
+Creating compose_my-git_1  ... done
+Creating compose_my-prod_1 ... done
+Creating compose_my-test_1 ... done
+
+
+[root@master compose]# docker-compose ps
+      Name                     Command               State          Ports
+---------------------------------------------------------------------------------
+compose_my-git_1    /usr/sbin/apache2ctl -D FO ...   Up      0.0.0.0:8093->80/tcp
+compose_my-prod_1   /usr/sbin/apache2ctl -D FO ...   Up      0.0.0.0:8091->80/tcp
+compose_my-test_1   /usr/sbin/apache2ctl -D FO ...   Up      0.0.0.0:8092->80/tcp
+
+
+### If you want to spawn multiple containers from same yaml file
+
+[root@master compose]# more docker-compose.yaml
+my-git:
+  image: prashug/myapache:v1
+
+[root@master compose]# docker-compose up -d --scale my-git=5
+
+
+### To build image and spawn container using compose
+
+[root@master compose]# pwd
+/root/compose
+
+[root@master compose]# more docker-compose.yaml
+version: '2'
+
+services:
+  my-atmosphere:
+    ports:
+      - '9091:8080'
+    build: .
+
+[root@master compose]# more Dockerfile
+FROM openjdk:8
+
+COPY target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar /usr/src/myapp/atmosphere.jar
+
+EXPOSE 8080
+
+WORKDIR /usr/src/myapp
+
+CMD ["java", "-jar", "atmosphere.jar"]
+
+
+[root@master compose]# docker-compose up -d --build
+WARNING: Found orphan containers (compose_my-git_2, compose_my-git_3, compose_my-git_4, compose_my-git_5, compose_my-git_1, compose_my-test_1, compose_my-prod_1) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
+Building my-atmosphere
+Step 1/5 : FROM openjdk:8
+8: Pulling from library/openjdk
+a4d8138d0f6b: Pull complete
+dbdc36973392: Pull complete
+f59d6d019dd5: Pull complete
+aaef3e026258: Pull complete
+5e86b04a4500: Pull complete
+1a6643a2873a: Pull complete
+2ad1e30fc17c: Pull complete
+Digest: sha256:33f68c6230af30dd104c838f54295a6765b5609c81719be9cf5b24b1e950b899
+Status: Downloaded newer image for openjdk:8
+ ---> 27da2af61908
+Step 2/5 : COPY target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar /usr/src/myapp/atmosphere.jar
+ ---> 42289e891237
+Step 3/5 : EXPOSE 8080
+ ---> Running in 19cbb6cb3f03
+Removing intermediate container 19cbb6cb3f03
+ ---> 06d56bdf205a
+Step 4/5 : WORKDIR /usr/src/myapp
+ ---> Running in a6b30b0e0019
+Removing intermediate container a6b30b0e0019
+ ---> 9e9bcd2f5390
+Step 5/5 : CMD ["java", "-jar", "atmosphere.jar"]
+ ---> Running in 1326f18ec032
+Removing intermediate container 1326f18ec032
+ ---> 0c874e1839ca
+Successfully built 0c874e1839ca
+Successfully tagged compose_my-atmosphere:latest
+Creating compose_my-atmosphere_1 ... done
+
+
+[root@master compose]# docker-compose ps
+         Name                     Command            State           Ports
+-----------------------------------------------------------------------------------
+compose_my-atmosphere_1   java -jar atmosphere.jar   Up      0.0.0.0:9091->8080/tcp
+[root@master compose]# history|grep scale
+  443  docker-compose up -d --scale=5
+  445  docker-compose up -d --scale=my-git:5
+  446  docker-compose up -d --scale my-git=5
+  491  history|grep scale
+
+[root@master compose]# docker images
+REPOSITORY              TAG                 IMAGE ID            CREATED              SIZE
+compose_my-atmosphere   latest              0c874e1839ca        About a minute ago   507MB
+prashug/myapache        latest              7349cdef0058        17 hours ago         244MB
+prashug/myapache        v1                  7349cdef0058        17 hours ago         244MB
+ubuntu_apache2          v1                  a19e25975a54        18 hours ago         188MB
+ubuntu                  16.04               5e13f8dd4c1a        8 days ago           120MB
+ubuntu                  latest              3556258649b2        8 days ago           64.2MB
+openjdk                 8                   27da2af61908        2 weeks ago          488MB
+
+
+
+### Setting up mail server
+
+[root@master training]# docker run --restart unless-stopped --name mailhog -p 1025:1025 -p 8025:8025 -d mailhog/mailhog
+Unable to find image 'mailhog/mailhog:latest' locally
+latest: Pulling from mailhog/mailhog
+d6a5679aa3cf: Pull complete
+a1300bbb94d5: Pull complete
+0f03c49950cb: Pull complete
+b96c5d9bff5f: Pull complete
+Digest: sha256:98c7e2e6621c897ad86f31610d756d76b8ee622c354c28a76f4ed49fb6ed996f
+Status: Downloaded newer image for mailhog/mailhog:latest
+c8356227e5ea1bf0c4fcb057e34e8ad5b18bc7c719533837943a975774e2fdaa
+
+
+
+########################### SWARM ###########################
+
+docker stack deploy -c docker-compose-1.yml getstartedlab
