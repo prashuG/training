@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: yes
+
+- include: playbooks/webserver.yaml
+- include: playbooks/firewall.yaml
