@@ -1,0 +1,40 @@
+---
+# tasks file for webserver
+- name: Install Apache Packages on RedHat
+  yum: name=httpd state=present
+  when: ansible_os_family == "RedHat"
+
+- name: Install Apache Packages on Ubuntu
+  apt: name=apache2 state=present
+  when: ansible_os_family == "Debian"
+
+- name: Start the Apache Service
+  service: name=httpd state=started
+
+- name: Quick Check of Document Root
+  command: ls {{doc_root}}
+  register: value
+  ignore_errors: yes
+
+- debug: msg="Document Root Does not exist"
+  when: value is failed
+
+- name: Create the Missing Document Root
+  file: path={{doc_root}} state=directory
+  when: value is failed
+
+- name: Deploy Apache Index Page
+  copy: src=templates/index.j2 dest={{doc_root}}/index.html
+
+- name: Deploy Apache Index Page
+  template: src=templates/info.j2 dest={{doc_root}}/info.html
+  notify: Restart Apache
+
+- name: Install Java Packages
+  yum: name=java state=present
+
+- name: Copy the Atmoshpere War File
+  copy: src=templates/atmosphere.jar dest={{doc_root}}/atmosphere.jar
+
+- name: Start Atmosphere Chat Bot
+  shell: nohup /bin/java -jar {{doc_root}}/atmosphere.jar & > nohup.out

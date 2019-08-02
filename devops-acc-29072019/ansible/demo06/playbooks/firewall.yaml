@@ -1,0 +1,5 @@
+---
+- hosts: dc
+  become: yes
+  roles:
+  - firewalld
