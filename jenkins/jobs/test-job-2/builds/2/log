@@ -1,0 +1,9 @@
+Started by upstream project "[8mha:////4JfxtM91ZZAavkPqo0tB4KBQLKiUBvc+KAQ/berjQMD7AAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAyuEgYB/az8JP2S1OISXSBD11AfALg4jozFAAAA[0mtest-job-1" build number [8mha:////4NwmNUD4kFlFmiMay2tAQi653nuaPI084xxUUNC5ErS9AAAAmx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLQIwSBkH9rPwk/ZLU4hJdIEPXUN8YAGkGWhnGAAAA[0m3
+originally caused by:
+ Started by user [8mha:////4A+ur6UH6DLEJ+2np1NlJcm882ixz4EweLTotKhQ4iVSAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzBEgZu/dLi1CL9xJTczDwAo1uC48AAAAA=[0mPrasanth Gopinath
+Running as SYSTEM
+Building in workspace /root/.jenkins/workspace/test-job-2
+[test-job-2] $ /bin/sh -xe /tmp/jenkins4277546025738917591.sh
++ ls -lrt
+total 0
+Finished: SUCCESS

@@ -22,12 +22,11 @@ node {
       stage('Stage Deployment in Docker Env.') {
         sh label: '', script: 'docker-compose up -d --build'
       }
+      stage('Getting Ready for Ansible Deployment') {
+        sh label: '', script: 'cp -rf target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar ../../../ansible/demo07/playbooks/roles/webserver/templates/atmosphere.jar'
+      }
     }
       
-    stage('Getting Ready for Ansible Deployment') {
-      sh label: '', script: 'cp -rf target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar ../../../ansible/demo07/playbooks/roles/webserver/templates/atmosphere.jar'
-    }
-
     stage('Prod Deployment via Ansible') {
       sh label: '', script: 'ansible-playbook -i ../../../ansible/demo07/inventory ../../../ansible/demo07/site.yaml'
     }
@@ -37,9 +36,9 @@ node {
     }
     notify ('Job has been completed')
   } catch (err) {
-    notify("Error ${err}")
-    currentBuild.result = 'FAILURE'
-  }
+      notify("Error ${err}")
+      currentBuild.result = 'FAILURE'
+    }
 }
 
 def notify(status) {

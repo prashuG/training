@@ -1,0 +1,22 @@
+commit 508593ab3d868d4c51bf4cc6ebbf40fa054ccab0
+tree 94de0228ffe509a93950906536177cb5fd496a36
+parent 2cd330c5dc82c85938eba5858d3f496532e76eae
+author Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 11:57:49 +0000
+committer Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 11:57:49 +0000
+
+    Training - 1
+
+
+
+:000000 100644 0000000000000000000000000000000000000000 80a4142aebcd0f72449212d5f09f90f78eef59fa A	TrainingCheats/docker_commands.txt
+commit 2cd330c5dc82c85938eba5858d3f496532e76eae
+tree abf7f4b3b55b462a1660245d3a0dfbaea99d8003
+parent 2637d8cb43d7faaca6f170b6650b2c25d84ade94
+author Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 11:55:12 +0000
+committer Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 11:55:12 +0000
+
+    Ansible Training - 1
+
+
+
+:000000 100644 0000000000000000000000000000000000000000 72a2d816076ee3eb77185d7e91569fe3caa6bbf2 A	ansible/demo01/inventory

@@ -1,0 +1,10 @@
+Started on Aug 1, 2019 7:35:00 AM
+Using strategy: Default
+[poll] Last Built Revision: Revision 63a68da24ae286d80469cf55b053b2a230a54384 (refs/remotes/origin/master)
+No credentials specified
+ > git --version # timeout=10
+ > git ls-remote -h https://github.com/prashuG/training.git # timeout=10
+Found 2 remote heads on https://github.com/prashuG/training.git
+[poll] Latest remote head revision on refs/heads/master is: 2637d8cb43d7faaca6f170b6650b2c25d84ade94
+Done. Took 1.4 sec
+Changes found

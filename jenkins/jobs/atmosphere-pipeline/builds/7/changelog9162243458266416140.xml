@@ -1,0 +1,11 @@
+commit 3243016b3e39da173feec73bed75d965082beac9
+tree d172c8b08e7a1fbb10c617c28b70dd596a0bc018
+parent 48ab09879d7f88f60a7bce795a76ada86cd8e610
+author Amit Vashist <amitvashist7@gmail.com> 2019-08-01 06:04:22 +0000
+committer Amit Vashist <amitvashist7@gmail.com> 2019-08-01 06:04:22 +0000
+
+    Jenkins with Docker Atmophere Deployment
+
+
+
+:100644 100644 df7c8ad2773918fad72db968611a7f113e12622f d9b45e577959757c2069188af48b344c02714c03 M	Jenkins/test

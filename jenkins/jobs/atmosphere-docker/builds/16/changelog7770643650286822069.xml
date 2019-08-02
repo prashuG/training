@@ -1,0 +1,11 @@
+commit 2637d8cb43d7faaca6f170b6650b2c25d84ade94
+tree 9f4072cc77e42332a3456f06cec9003d6f80ce6e
+parent 63a68da24ae286d80469cf55b053b2a230a54384
+author Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 07:32:32 +0000
+committer Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 07:32:32 +0000
+
+    Adding Mail server and error catch - 4
+
+
+
+:100644 100644 b09d769a11b3a9486bff8f426ed7cbd03791f885 7dfc7f3d8d94535d74fb6be77c30ea5f70380fe2 M	DockerComposeAtmosphere

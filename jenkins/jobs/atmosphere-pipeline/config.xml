@@ -1,0 +1,36 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job@2.33">
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+      <triggers/>
+    </org.jenkinsci.plugins.workflow.job.properties.PipelineTriggersJobProperty>
+  </properties>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsFlowDefinition" plugin="workflow-cps@2.72">
+    <script>node {
+    stage (&apos;Checkout Repo&apos;) {
+        git &apos;https://github.com/amitvashist7/devops-acc-29072019.git&apos;
+    }
+    def Project_path = &quot;atmosphere/spring-boot-samples/spring-boot-sample-atmosphere&quot;
+    dir (Project_path) {
+    stage (&apos;clean&apos;) {
+            sh label: &apos;&apos;, script: &apos;mvn clean&apos;
+    }
+    stage (&apos;Compile&apos;) {
+        sh label: &apos;&apos;, script: &apos;mvn compile&apos;
+    }
+    stage (&apos;Package&apos;) {
+        sh label: &apos;&apos;, script: &apos;mvn package&apos;
+    }
+    stage (&apos;Archive&apos;) {
+        archiveArtifacts &apos;target/*.jar&apos;
+    }
+   }
+}</script>
+    <sandbox>true</sandbox>
+  </definition>
+  <triggers/>
+  <disabled>false</disabled>
+</flow-definition>

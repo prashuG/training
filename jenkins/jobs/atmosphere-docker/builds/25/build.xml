@@ -1,0 +1,186 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-build plugin="workflow-job@2.33">
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause>
+            <userId>admin</userId>
+          </hudson.model.Cause_-UserIdCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <org.jenkinsci.plugins.workflow.libs.LibrariesAction plugin="workflow-cps-global-lib@2.14">
+      <libraries/>
+    </org.jenkinsci.plugins.workflow.libs.LibrariesAction>
+    <org.jenkinsci.plugins.workflow.cps.EnvActionImpl plugin="workflow-cps@2.72">
+      <env class="tree-map"/>
+    </org.jenkinsci.plugins.workflow.cps.EnvActionImpl>
+    <hudson.tasks.MailMessageIdAction plugin="mailer@1.24">
+      <messageId>&lt;167080206.21.1564744871544.JavaMail.root@master&gt;</messageId>
+    </hudson.tasks.MailMessageIdAction>
+    <hudson.plugins.git.util.BuildData plugin="git@3.11.0">
+      <buildsByBranchName>
+        <entry>
+          <string>refs/remotes/origin/master</string>
+          <hudson.plugins.git.util.Build>
+            <marked plugin="git-client@2.8.0">
+              <sha1>92f7ec99318fb399a821edf6bf6ea030c3573fd9</sha1>
+              <branches class="list">
+                <hudson.plugins.git.Branch>
+                  <sha1 reference="../../../sha1"/>
+                  <name>refs/remotes/origin/master</name>
+                </hudson.plugins.git.Branch>
+              </branches>
+            </marked>
+            <revision reference="../marked"/>
+            <hudsonBuildNumber>25</hudsonBuildNumber>
+          </hudson.plugins.git.util.Build>
+        </entry>
+      </buildsByBranchName>
+      <lastBuild reference="../buildsByBranchName/entry/hudson.plugins.git.util.Build"/>
+      <remoteUrls>
+        <string>https://github.com/prashuG/training.git</string>
+      </remoteUrls>
+    </hudson.plugins.git.util.BuildData>
+    <hudson.plugins.git.GitTagAction plugin="git@3.11.0">
+      <tags class="hudson.util.CopyOnWriteMap$Tree">
+        <entry>
+          <string>refs/remotes/origin/master</string>
+          <list/>
+        </entry>
+      </tags>
+      <ws>/root/.jenkins/workspace/atmosphere-docker</ws>
+    </hudson.plugins.git.GitTagAction>
+    <org.jenkinsci.plugins.workflow.steps.scm.MultiSCMRevisionState plugin="workflow-scm-step@2.9">
+      <revisionStates>
+        <entry>
+          <string>git https://github.com/prashuG/training.git</string>
+          <hudson.scm.SCMRevisionState_-None/>
+        </entry>
+      </revisionStates>
+    </org.jenkinsci.plugins.workflow.steps.scm.MultiSCMRevisionState>
+  </actions>
+  <queueId>86</queueId>
+  <timestamp>1564744866302</timestamp>
+  <startTime>1564744866304</startTime>
+  <result>FAILURE</result>
+  <duration>86623</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <execution class="org.jenkinsci.plugins.workflow.cps.CpsFlowExecution">
+    <result>SUCCESS</result>
+    <script>node {
+
+  notify(&apos;Job has been Initated&apos;)
+
+  try {
+    stage(&apos;CheckOut Repo&apos;) {
+      git &apos;https://github.com/prashuG/training.git&apos;
+    }
+
+    def Project_Path = &quot;atmosphere/spring-boot-samples/spring-boot-sample-atmosphere&quot;
+
+    dir (Project_Path) {
+      stage(&apos;Clean my Repo&apos;) {
+        sh label: &apos;&apos;, script: &apos;mvn clean&apos;
+      }
+      stage(&apos;Comiple my Code&apos;) {
+        sh label: &apos;&apos;, script: &apos;mvn compile&apos;
+      }
+      stage(&apos;Build Atmosphere Package&apos;) {
+        sh label: &apos;&apos;, script: &apos;mvn package&apos;
+      }
+      stage(&apos;Stage Deployment in Docker Env.&apos;) {
+        sh label: &apos;&apos;, script: &apos;docker-compose up -d --build&apos;
+      }
+    }
+      
+    stage(&apos;Getting Ready for Ansible Deployment&apos;) {
+      sh label: &apos;&apos;, script: &apos;cp -rf target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar ../../../ansible/demo07/playbooks/roles/webserver/templates/atmosphere.jar&apos;
+    }
+
+    stage(&apos;Prod Deployment via Ansible&apos;) {
+      sh label: &apos;&apos;, script: &apos;ansible-playbook -i ../../../ansible/demo07/inventory ../../../ansible/demo07/site.yaml&apos;
+    }
+
+    stage(&apos;Archive my Artifacts&apos;) {
+      archiveArtifacts &quot;${Project_Path}/target/*.jar&quot;
+    }
+    notify (&apos;Job has been completed&apos;)
+  } catch (err) {
+    notify(&quot;Error ${err}&quot;)
+    currentBuild.result = &apos;FAILURE&apos;
+  }
+}
+
+def notify(status) {
+  emailext (
+    to: &quot;gopinath.prashu@gmail.com&quot;,
+    subject: &quot;${status}: Job &apos;${env.JOB_NAME} [${env.BUILD_NUMBER}]&apos;&quot;,
+    body: &quot;&quot;&quot;&lt;p&gt;${status}: Job &apos;${env.JOB_NAME} [${env.BUILD_NUMBER}]&apos;:&lt;/p&gt;
+    &lt;p&gt;Check console output at &lt;a href=&apos;${env.BUILD_URL}&apos;&gt;${env.JOB_NAME} [${env.BUILD_NUMBER}]&lt;/a&gt;&lt;/p&gt;&quot;&quot;&quot;,
+  )
+}
+</script>
+    <loadedScripts class="map"/>
+    <durabilityHint>MAX_SURVIVABILITY</durabilityHint>
+    <timings class="map">
+      <entry>
+        <string>flowNode</string>
+        <long>555276683</long>
+      </entry>
+      <entry>
+        <string>classLoad</string>
+        <long>746055658</long>
+      </entry>
+      <entry>
+        <string>run</string>
+        <long>1398470862</long>
+      </entry>
+      <entry>
+        <string>parse</string>
+        <long>529050036</long>
+      </entry>
+      <entry>
+        <string>saveProgram</string>
+        <long>128607233</long>
+      </entry>
+    </timings>
+    <sandbox>true</sandbox>
+    <iota>43</iota>
+    <head>1:43</head>
+    <done>true</done>
+    <resumeBlocked>false</resumeBlocked>
+  </execution>
+  <completed>true</completed>
+  <checkouts class="hudson.util.PersistedList">
+    <org.jenkinsci.plugins.workflow.job.WorkflowRun_-SCMCheckout>
+      <scm class="hudson.plugins.git.GitSCM" plugin="git@3.11.0">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+            <url>https://github.com/prashuG/training.git</url>
+          </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches class="singleton-list">
+          <hudson.plugins.git.BranchSpec>
+            <name>*/master</name>
+          </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="empty-list"/>
+        <extensions>
+          <hudson.plugins.git.extensions.impl.LocalBranch>
+            <localBranch>master</localBranch>
+          </hudson.plugins.git.extensions.impl.LocalBranch>
+        </extensions>
+      </scm>
+      <node></node>
+      <workspace>/root/.jenkins/workspace/atmosphere-docker</workspace>
+      <changelogFile>/root/.jenkins/jobs/atmosphere-docker/builds/25/changelog6340224741288878950.xml</changelogFile>
+      <pollingBaseline class="hudson.scm.SCMRevisionState$None" reference="../../../actions/org.jenkinsci.plugins.workflow.steps.scm.MultiSCMRevisionState/revisionStates/entry/hudson.scm.SCMRevisionState_-None"/>
+    </org.jenkinsci.plugins.workflow.job.WorkflowRun_-SCMCheckout>
+  </checkouts>
+</flow-build>

@@ -1,0 +1,34 @@
+commit f60348cf4d9c50e6217f9c051663810eb843d776
+tree 9f4072cc77e42332a3456f06cec9003d6f80ce6e
+parent bd77fb9b310e91292c763d181d7fd6457088da3f
+author Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 07:28:53 +0000
+committer Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 07:28:53 +0000
+
+    Adding Mail server and error catch - 2
+
+
+
+:100644 100644 b97601d65d04564bc27ca0122a0f43a8e779f7d4 7dfc7f3d8d94535d74fb6be77c30ea5f70380fe2 M	DockerComposeAtmosphere
+commit bd77fb9b310e91292c763d181d7fd6457088da3f
+tree bdf9082b50a623dd6aac0f0f5bbecfe490a35a3a
+parent d243db8a5a8ae1a75e8ba62e9907d189bbfff938
+author Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 07:24:48 +0000
+committer Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 07:24:48 +0000
+
+    Adding Mail server and error catch - 1
+
+
+
+:100644 100644 7eee3a04f6d4cc5900020f35c49b2961c45fe28c b97601d65d04564bc27ca0122a0f43a8e779f7d4 M	DockerComposeAtmosphere
+commit d243db8a5a8ae1a75e8ba62e9907d189bbfff938
+tree 194e77681e1964dfda73036078f10d1183638ee6
+parent 253063a551291a62b3a786b0db7729135e91d2b4
+author Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 07:22:11 +0000
+committer Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 07:22:11 +0000
+
+    Adding Mail server and error catch
+
+
+
+:100644 100644 6583471fb20f5d4d3fb9e89f686b13b4fefb5994 7eee3a04f6d4cc5900020f35c49b2961c45fe28c M	DockerComposeAtmosphere
+:000000 100644 0000000000000000000000000000000000000000 6583471fb20f5d4d3fb9e89f686b13b4fefb5994 A	DockerComposeAtmosphere_bkp

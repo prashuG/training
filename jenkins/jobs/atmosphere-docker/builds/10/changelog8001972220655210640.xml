@@ -1,0 +1,11 @@
+commit 253063a551291a62b3a786b0db7729135e91d2b4
+tree c7f514ac8021afa7745debf6d0428fa8ea8d464e
+parent 4fd82b3bc56fe322042811af451eb1aead99364c
+author Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 07:02:01 +0000
+committer Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 07:02:01 +0000
+
+    Adding Socker compose files for Atmosphere - 4
+
+
+
+:100644 100644 00bc3431d634019ae468e7857b1f03d45f74cc54 55dd0303afd7161cfecde494d8bddaae56a5fd25 M	atmosphere/spring-boot-samples/spring-boot-sample-atmosphere/docker-compose.yaml

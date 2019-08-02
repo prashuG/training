@@ -1,0 +1,22 @@
+commit 4fd82b3bc56fe322042811af451eb1aead99364c
+tree 96b3344c2aca333b48492209b6b5a9fd94114087
+parent 312ba97ac5eb0c4652203f099b4a177f64b661a4
+author Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 06:57:44 +0000
+committer Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 06:57:44 +0000
+
+    Adding Socker compose files for Atmosphere - 3
+
+
+
+:100644 100644 72acd6b127b7af73c1f6d6f5f1bd3a168bee9083 6583471fb20f5d4d3fb9e89f686b13b4fefb5994 M	DockerComposeAtmosphere
+commit 312ba97ac5eb0c4652203f099b4a177f64b661a4
+tree a7a493a173e32f48d07436af04085724f00f91e7
+parent 1d02aedb3628a8ce1edd2420cf7fffc73ac6ad7f
+author Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 06:49:05 +0000
+committer Prasanth Gopinath <gopinath.prashu@gmail.com> 2019-08-01 06:49:05 +0000
+
+    Adding Socker compose files for Atmosphere - 2
+
+
+
+:100644 100644 fd5454f94531e85c5790277812f8ef8f30596fcd 72acd6b127b7af73c1f6d6f5f1bd3a168bee9083 M	DockerComposeAtmosphere

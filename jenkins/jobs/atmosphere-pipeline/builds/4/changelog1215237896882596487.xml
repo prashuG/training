@@ -1,0 +1,33 @@
+commit 4aed957a04338ff80f29f739360af902476eb576
+tree 79a5c090db33eea334b7dc41649d550b08f9db5d
+parent 29338f62d2e43934ed4ebdc1fd5142cad92cb199
+author Amit Vashist <amitvashist7@gmail.com> 2019-07-29 17:44:52 +0000
+committer Amit Vashist <amitvashist7@gmail.com> 2019-07-29 17:44:52 +0000
+
+    CHANGE_ME - Test02
+
+
+
+:100644 100644 470aa70a2004fa883afb7905c816d4ad0ab779eb da8c39d37c4953652bb7ca77a94d1d7860077576 M	CHANGE_ME.txt
+commit 29338f62d2e43934ed4ebdc1fd5142cad92cb199
+tree 01a9eb76304eb73f5c734eb394e3014bde3a8117
+parent acf694a3c9ddabd42d11214c60261aece9dc6dda
+author Amit Vashist <amitvashist7@gmail.com> 2019-07-29 17:38:49 +0000
+committer Amit Vashist <amitvashist7@gmail.com> 2019-07-29 17:38:49 +0000
+
+    CHANGE_ME.txt
+
+
+
+:000000 100644 0000000000000000000000000000000000000000 470aa70a2004fa883afb7905c816d4ad0ab779eb A	CHANGE_ME.txt
+commit acf694a3c9ddabd42d11214c60261aece9dc6dda
+tree 1e88276f231be21cc4d8e7db8c5a09a618cf39b4
+parent bbcf05cf66c88858f08bc6351c7882cb62298297
+author Amit Vashist <amitvashist7@gmail.com> 2019-07-29 17:03:07 +0000
+committer Amit Vashist <amitvashist7@gmail.com> 2019-07-29 17:03:07 +0000
+
+    Jenkins - Stages
+
+
+
+:000000 100644 0000000000000000000000000000000000000000 bdaf20e4c574eb127ebf2eec00413426087c6547 A	Jenkins/stages

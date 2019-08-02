@@ -1,0 +1,76 @@
+commit 48ab09879d7f88f60a7bce795a76ada86cd8e610
+tree 30436cbe90beea63e9caa83bd5d90abfbc458df8
+parent 21da0c1fd7e34d4fd58e668700947bf7ef291097
+author Amit Vashist <amitvashist7@gmail.com> 2019-08-01 05:46:25 +0000
+committer Amit Vashist <amitvashist7@gmail.com> 2019-08-01 05:46:25 +0000
+
+    atmosphere
+
+
+
+:100644 000000 4805f550400f7ae4d826600337e1a6504f417bd9 0000000000000000000000000000000000000000 D	docker/DockerCompose/atmosphere/target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar
+commit 21da0c1fd7e34d4fd58e668700947bf7ef291097
+tree 0a2f413e0fd8447f1131663158294d8f4fa12ca6
+parent 3ce4cbe6c9e45f8ac71f1dfc9ddf5c8f054251b5
+author Amit Vashist <amitvashist7@gmail.com> 2019-08-01 05:45:30 +0000
+committer Amit Vashist <amitvashist7@gmail.com> 2019-08-01 05:45:30 +0000
+
+    atmosphere
+
+
+
+:000000 100644 0000000000000000000000000000000000000000 912f7e570d8bf52e47df4816b7c67f0659dfeb75 A	docker/DockerCompose/Test/docker-compose.yaml
+:000000 100644 0000000000000000000000000000000000000000 86bdb5ef7765071b694576e21dde293ffaa27e7c A	docker/DockerCompose/atmosphere/Dockerfile
+:000000 100644 0000000000000000000000000000000000000000 3873e63dc9a5be4bc81128e713a8a1a081bb0d10 A	docker/DockerCompose/atmosphere/docker-compose.yaml
+:000000 100644 0000000000000000000000000000000000000000 4805f550400f7ae4d826600337e1a6504f417bd9 A	docker/DockerCompose/atmosphere/target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar
+:000000 100644 0000000000000000000000000000000000000000 6065bf2e26b41a6d0d417c09be548c3befb1f786 A	docker/DockerCompose/myapache/Dockerfile
+:000000 100644 0000000000000000000000000000000000000000 75054281bf22b16cd3959906708aeb4359eaf1a4 A	docker/DockerCompose/myapache/amit.abc
+:000000 100644 0000000000000000000000000000000000000000 8f967b22e45c36926eed9264933d0dd6c5648de0 A	docker/DockerCompose/myapache/centos-release
+:000000 100644 0000000000000000000000000000000000000000 f49ad35ad4ba2f4dea0805cff7dd2b94f6e2f5e7 A	docker/DockerCompose/myapache/docker-compose.yaml
+commit 3ce4cbe6c9e45f8ac71f1dfc9ddf5c8f054251b5
+tree 64d1468fccbcd0a01c14a02fcb3ef2b610f369d9
+parent 5b19fcd2a95707d6ecb5e166a8e92fad914ba044
+author Amit Vashist <amitvashist7@gmail.com> 2019-07-31 12:20:51 +0000
+committer Amit Vashist <amitvashist7@gmail.com> 2019-07-31 12:20:51 +0000
+
+    Docker-Compose
+
+
+
+:000000 100644 0000000000000000000000000000000000000000 e10f08a902ea8790ef66b4dff02b939bc284fe1f A	docker/DockerCompose/Hello-World/docker-compose.yaml
+commit 5b19fcd2a95707d6ecb5e166a8e92fad914ba044
+tree 651468465fc0a14f63f81c87e35180303c76a0b2
+parent 66ba5f1bece4a9d7520e8f52880f91623a188e3b
+author Amit Vashist <amitvashist7@gmail.com> 2019-07-31 11:28:46 +0000
+committer Amit Vashist <amitvashist7@gmail.com> 2019-07-31 11:28:46 +0000
+
+    Docker Hist - 3
+
+
+
+:100644 100644 2f6d4ab111b0ab9e6d6c56cfa6eb49f1a797c6f7 8fe2f1596355a821f29dba40f22f57386446387f M	docker/docker_hist.txt
+:000000 100644 0000000000000000000000000000000000000000 6065bf2e26b41a6d0d417c09be548c3befb1f786 A	docker/dockerfiles/apache/Dockerfile
+:000000 100644 0000000000000000000000000000000000000000 5ad0fca844ebdfb4c6a177f937c4d7dca50aa707 A	docker/dockerfiles/apache/amit.abc
+:000000 100644 0000000000000000000000000000000000000000 8f967b22e45c36926eed9264933d0dd6c5648de0 A	docker/dockerfiles/apache/centos-release
+commit 66ba5f1bece4a9d7520e8f52880f91623a188e3b
+tree 32a5f04d508cee6c456d3ced9cb4d8b598296800
+parent 160f16a3ffd53e0fd7ea5c3d40f2824bad9d9058
+author Amit Vashist <amitvashist7@gmail.com> 2019-07-31 10:09:40 +0000
+committer Amit Vashist <amitvashist7@gmail.com> 2019-07-31 10:09:40 +0000
+
+    Docker Hist-2
+
+
+
+:100644 100644 9838f10ae6d28651b6cd5af8b482766a57cc452a 2f6d4ab111b0ab9e6d6c56cfa6eb49f1a797c6f7 M	docker/docker_hist.txt
+commit 160f16a3ffd53e0fd7ea5c3d40f2824bad9d9058
+tree b7101e770785c3f1041b753884c4e3df385f4e74
+parent 5768d0bcb1c628463a88248f8b7043625b6dc555
+author Amit Vashist <amitvashist7@gmail.com> 2019-07-31 08:06:13 +0000
+committer Amit Vashist <amitvashist7@gmail.com> 2019-07-31 08:06:13 +0000
+
+    Docker Hist
+
+
+
+:000000 100644 0000000000000000000000000000000000000000 9838f10ae6d28651b6cd5af8b482766a57cc452a A	docker/docker_hist.txt
