@@ -1,0 +1,180 @@
+    1  ip addr 
+    2  exit
+    3  ping google.com
+    4  ;s
+    5  ls
+    6  git clone https://github.com/amitvashist7/devops-acc-29072019.git
+    7  yum install git -y 
+    8  git clone https://github.com/amitvashist7/devops-acc-29072019.git
+    9  ls
+   10  cd devops-acc-29072019/
+   11  ls
+   12  git config --list 
+   13  ls
+   14  echo  "Welcome to the world of Git" > helloworld.txt
+   15  git status 
+   16  git add helloworld.txt
+   17  git status 
+   18  git commit -m "Added a new helloworld.txt"
+   19  git config --global user.email "amitvashist7@gmail.com"
+   20  git config --global user.name "Amit Vashist"
+   21  git config --list 
+   22  git commit -m "Added a new helloworld.txt"
+   23  git push 
+   24  ls
+   25  exit
+   26  history 
+   27  git log 
+   28  cd - 
+   29  ls
+   30  cd devops-acc-29072019/
+   31  git log
+   32   ls
+   33  touch a b c d e f 
+   34  ls -ltr 
+   35  echo "Hello" > a 
+   36  echo "Hello" > b
+   37  echo "Hello" > c
+   38  echo "Hello" > d
+   39  echo "Hello" > e
+   40  echo "Hello" > f
+   41  ls
+   42  git status 
+   43  git add d 
+   44  git status 
+   45  git commit 
+   46  git status 
+   47  git logs 
+   48  git log
+   49  git push 
+   50  git pull 
+   51  git status 
+   52  git logs 
+   53  git log
+   54  git push 
+   55  history 
+   56  ls
+   57  git status 
+   58  git add a b 
+   59  git status 
+   60  git commit -m "File a & b has been added"
+   61  git push 
+   62  exit
+   63  ping google.com
+   64  ls
+   65  cd - 
+   66  cd devops-acc-29072019/docker/DockerCompose/atmosphere/
+   67  ls
+   68  docker-compose up -d --build
+   69  docker-compose ps 
+   70  ls
+   71  cd ..
+   72  ls
+   73* 
+   74  git commit -m "atmosphere";git push origin master
+   75  git rm docker/DockerCompose/atmosphere/target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar
+   76  git rm atmosphere/target/spring-boot-sample-atmosphere-1.4.0.BUILD-SNAPSHOT.jar
+   77  git add . 
+   78  git commit -m "atmosphere";git push origin master
+   79  ld
+   80  docker ps -a  
+   81  docker kill $(docker ps -qa)
+   82  docker rm $(docker ps -qa)
+   83  ls
+   84  cd atmosphere/
+   85  ls
+   86  vim docker-compose.yaml 
+   87  ls
+   88  cd ..
+   89  ls
+   90  cp -rf atmosphere/* ../../atmosphere/spring-boot-samples/spring-boot-sample-atmosphere/
+   91  cd ../../atmosphere/spring-boot-samples/spring-boot-sample-atmosphere/
+   92  ls
+   93  cd ../../
+   94  ls
+   95  cd ../
+   96  ls
+   97  cd Jenkins/
+   98  ls
+   99  ls -ltr 
+  100  vim test 
+  101  docker images 
+  102  docker images | grep -v openjdk
+  103  docker images | grep -vi 'openjdk|ubuntu'
+  104  docker images | egrep -vi 'openjdk|ubuntu'
+  105  docker images | egrep -vi 'openjdk|ubuntu' | awk -F" " '{print $3}'
+  106  docker images | egrep -vi 'openjdk|ubuntu' | awk -F" " '{print $3}' | grep -v IMAGE
+  107  docker rmi $(docker images | egrep -vi 'openjdk|ubuntu' | awk -F" " '{print $3}' | grep -v IMAGE)
+  108  docker images
+  109  docker rmi amitvashist7/myapache-acc:latest
+  110  docker rmi amitvashist7/myapache-acc:v3
+  111  ls
+  112  docker images
+  113  git add . 
+  114  git commit -m "Jenkins with Docker Atmophere Deployment"
+  115  git push origin master
+  116  history 
+  117  ls
+  118  vim test 
+  119  git add . 
+  120  git commit -m "Update - 1"
+  121  git push origin master 
+  122  ls
+  123  cd ..
+  124  ls
+  125  cd atmosphere/
+  126  ls
+  127  history 
+  128  ls
+  129  cd spring-boot-samples/spring-boot-sample-atmosphere/
+  130  ls
+  131  pwd
+  132  ls
+  133  git add . 
+  134  git commit -m "Docker files"
+  135  git push origin master
+  136  pwd
+  137  docker-compose stop
+  138  ls
+  139  cd ..
+  140  ls
+  141  cd ..
+  142  ls
+  143  cd ..
+  144  ls
+  145  cat CHANGE_ME.txt 
+  146  echo "Test-03" > CHANGE_ME.txt 
+  147  git add . ; git commit -m "Change Me test-3"; git push origin master 
+  148  ls
+  149  docker run --restart unless-stopped --name mailhog -p 1025:1025 -p 8025:8025 -d mailhog/mailhog
+  150  docker ps 
+  151  ls
+  152  cd Jenkins/
+  153  ls
+  154  vim test 
+  155  git add . 
+  156  git commit -m "E-mail Notification"
+  157  git push origin master 
+  158  ls
+  159  vim test 
+  160  git add . ; git commit -m "Try & Error"; git push origin master
+  161  ls
+  162  vim test 
+  163  git add . ; git commit -m "Error in Pipeline"; git push origin master
+  164  ls
+  165  vim test 
+  166  git add . ; git commit -m "Error in Pipeline"; git push origin master
+  167  ls
+  168  vim test 
+  169  git add . ; git commit -m "Pipeline has been fixed"; git push origin master
+  170  cd 
+  171  ls
+  172  cd devops-acc-29072019/
+  173  ls
+  174  mkdir ansible 
+  175  ls
+  176  cd ansible/
+  177  ls
+  178  cd ../docker/
+  179  ls
+  180  history > docker_hist.txt 

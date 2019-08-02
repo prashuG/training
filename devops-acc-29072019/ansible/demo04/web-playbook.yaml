@@ -1,0 +1,26 @@
+---
+
+- hosts: web
+  become: yes
+  tasks:
+  - name: Install Apache Packages on RedHat
+    yum: name=httpd state=present
+    when: ansible_os_family == "RedHat"
+
+  - name: Install Apache Packages on Ubuntu
+    apt: name=apache2 state=present
+    when: ansible_os_family == "Debian"
+
+  - name: Start the Apache Service
+    service: name=httpd state=started 
+
+  - name: Deploy Apache Index Page
+    template: src=templates/index.j2 dest=/var/www/html/index.html
+
+
+
+- hosts: dc
+  become: yes
+  tasks:
+  - name: Stop the firewall
+    service: name=firewalld state=stopped

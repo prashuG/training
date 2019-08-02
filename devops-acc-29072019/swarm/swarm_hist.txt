@@ -1,0 +1,235 @@
+    1  ip addr 
+    2  exit
+    3  ping google.com
+    4  ;s
+    5  ls
+    6  git clone https://github.com/amitvashist7/devops-acc-29072019.git
+    7  yum install git -y 
+    8  git clone https://github.com/amitvashist7/devops-acc-29072019.git
+    9  ls
+   10  cd devops-acc-29072019/
+   11  ls
+   12  git config --list 
+   13  ls
+   14  echo  "Welcome to the world of Git" > helloworld.txt
+   15  git status 
+   16  git add helloworld.txt
+   17  git status 
+   18  git commit -m "Added a new helloworld.txt"
+   19  git config --global user.email "amitvashist7@gmail.com"
+   20  git config --global user.name "Amit Vashist"
+   21  git config --list 
+   22  git commit -m "Added a new helloworld.txt"
+   23  git push 
+   24  ls
+   25  exit
+   26  history 
+   27  git log 
+   28  cd - 
+   29  ls
+   30  cd devops-acc-29072019/
+   31  git log
+   32   ls
+   33  touch a b c d e f 
+   34  ls -ltr 
+   35  echo "Hello" > a 
+   36  echo "Hello" > b
+   37  echo "Hello" > c
+   38  echo "Hello" > d
+   39  echo "Hello" > e
+   40  echo "Hello" > f
+   41  ls
+   42  git status 
+   43  git add d 
+   44  git status 
+   45  git commit 
+   46  git status 
+   47  git logs 
+   48  git log
+   49  git push 
+   50  git pull 
+   51  git status 
+   52  git logs 
+   53  git log
+   54  git push 
+   55  history 
+   56  ls
+   57  git status 
+   58  git add a b 
+   59  git status 
+   60  git commit -m "File a & b has been added"
+   61  git push 
+   62  exit
+   63  ls
+   64  cd ../ansible/
+   65  ls
+   66  yum install ansible -y 
+   67  ls
+   68  mkdir demo01
+   69  cd demo01/
+   70  ls
+   71  vim inventory
+   72  cat inventory 
+   73  ssh localhost
+   74  ssh vagrant@localhost
+   75  vi /etc/ssh/sshd_config 
+   76  service sshd restart
+   77  ssh vagrant@localhost
+   78  ssh vagrant@172.31.0.10
+   79  ssh vagrant@172.31.0.11
+   80  ssh vagrant@172.31.0.12
+   81  ansible all -i inventory -m ping -u vagrant -k 
+   82  cat inventory 
+   83  ansible -v 
+   84  ansible -version 
+   85  ansible --version 
+   86  ls
+   87  ping 172.31.0.11
+   88  ansible-doc -l 
+   89  ansible-doc ping 
+   90  ansible-doc yum
+   91  ansible-doc service 
+   92  ansible-doc yum
+   93  ansible all -i inventory -m yum -a "name=net-tools state=present" -u vagrant -k 
+   94  ansible all -i inventory -m yum -a "name=net-tools state=present" -u vagrant -k -s
+   95  ansible all -i inventory -m yum -a "name=net-tools state=present" -u vagrant -k -sudo
+   96  ansible all -i inventory -m yum -a "name=net-tools state=present" -u vagrant -k --sudo
+   97  ansible all -i inventory -m yum -a "name=net-tools state=present" -u vagrant -k -b 
+   98  history 
+   99  ls
+  100  cd ..
+  101  ls
+  102  cp -rf demo01 demo02 
+  103  ls
+  104  cd demo02/
+  105  ls
+  106  vi inventory 
+  107  ls
+  108  rm 1
+  109  cat inventory 
+  110  ansible web -i inventory -m ping -u vagrant -k 
+  111  ansible db -i inventory -m ping -u vagrant -k 
+  112  vi inventory 
+  113  ansible dc -i inventory -m ping -u vagrant -k 
+  114  vi inventory 
+  115  ansible dc -i inventory -m ping -u vagrant -k 
+  116  vi inventory 
+  117  ansible dc -i inventory -m ping -u vagrant -k 
+  118  ansible all -i inventory -m ping -u vagrant -k 
+  119  vi inventory 
+  120  ansible all -i inventory -m ping -u vagrant -k 
+  121  vi inventory 
+  122  ansible all -i inventory -m ping -u vagrant -k 
+  123  cat inventory 
+  124  vim inventory 
+  125  ansible dc -i inventory -m ping  
+  126  ls
+  127  cd ..
+  128  ls
+  129  history > ansible_hist.txt
+  130  git add . ; git commit -m "Ansible Demo"; git push origin master  
+  131  ls
+  132  ansible web:db -i inventory -m ping -u vagrant -k 
+  133  ansible web:db -i inventory -m ping -u vagrant 
+  134  ls
+  135  cd demo02/
+  136  ls
+  137  ansible web:db -i inventory -m ping 
+  138  ansible 'web:&db' -i inventory -m ping 
+  139  ansible 'all:&db' -i inventory -m ping 
+  140  ansible 'all:&dc' -i inventory -m ping 
+  141  ansible 'all:&dc:!db' -i inventory -m ping 
+  142  ansible 'all:&dc:!dc' -i inventory -m ping 
+  143  ls
+  144  cat inventory 
+  145  cd ..
+  146  ls
+  147  history > ansible_hist.txt 
+  148  ls
+  149  cd demo02/
+  150  ls
+  151  cat inventory 
+  152  ansible 172.31.0.11 -i inventory -m ping 
+  153  ansible 172.31.0.11 -i inventory -m setup 
+  154  cat inventory 
+  155  cd ..
+  156  ls
+  157  history > ansible_hist.txt 
+  158  git add . ; git commit -m "Ansible-Group"; git push origin master
+  159  ping google.com
+  160  ls
+  161  cd demo02/
+  162  ls
+  163  cat inventory 
+  164  git add . ; git commit -m "Ansible-Group"; git push origin master
+  165  init 6 '
+  166  init 6 
+  167  ls
+  168  java -jar jenkins.war --httpPort=9091 &
+  169  ls
+  170  ping google.com
+  171  ping 8.8.8.8
+  172  ping google.com
+  173  ls
+  174  cd devops-acc-29072019/
+  175  ls
+  176  cd ..
+  177  ll
+  178  cd 
+  179  ls
+  180  cd devops-acc-29072019/
+  181  ll
+  182  ping google.com
+  183  ping google.com
+  184  reboot
+  185  ping google.com
+  186  vim /etc/resolv.conf 
+  187  vim /etc/resolv.conf 
+  188  ls
+  189  cd
+  190  ls
+  191  rsync -av devops-acc-29072019 172.31.0.12:/root/
+  192  rsync -av devops-acc-29072019 vagrant@172.31.0.12:/root/
+  193  rsync -av devops-acc-29072019 vagrant@172.31.0.12:/home/vagrant/
+  194  docker swarm init --advertiser-addr 172.31.0.10
+  195  docker swarm init --advertise-addr 172.31.0.10
+  196  docker node ls 
+  197  docker node ls 
+  198  docker node ls 
+  199  docker node ls 
+  200  ls
+  201  vim docker-compose.yml
+  202  vim docker-compose.yml
+  203  ls
+  204  vim docker-compose.yml
+  205  vim docker-compose-1.yml
+  206  docker stack deploy -c docker-compose-1.yml getstartedlab
+  207  docker stack ls
+  208  docker service ls 
+  209  docker service ps getstartedlab_web
+  210  docker service ps getstartedlab_web
+  211  docker service ps getstartedlab_web
+  212  docker service scale getstartedlab_web=2
+  213  docker service ps getstartedlab_web
+  214  docker service scale getstartedlab_web=4
+  215  ls
+  216  ls
+  217  cd devops-acc-29072019/
+  218  ls
+  219  git pull 
+  220  ip addr 
+  221  ls
+  222  cd 
+  223  ls
+  224  vim docker-compose-2.yml 
+  225  docker stack deploy -c docker-compose-1.yml getstartedlab
+  226  docker images 
+  227  vim docker-compose-2.yml 
+  228  docker stack deploy -c docker-compose-1.yml getstartedlab
+  229  docker stack deploy -c docker-compose-2.yml getstartedlab
+  230  ls
+  231  cd devops-acc-29072019/
+  232  ls
+  233  cd 
+  234  ls
+  235  history > swarm_hist.txt
